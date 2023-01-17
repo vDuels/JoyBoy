@@ -1,9 +1,3 @@
-if game.Players.LocalPlayer.UserId == ("393694140","3292158892") then
-    print("Whitelisted")
-    else
-        game.Players.LocalPlayer:Kick("Not Whitelisted Nigga")
-
-
 
 local lplr = game.Players.LocalPlayer
 local camera = game:GetService("Workspace").CurrentCamera
@@ -238,4 +232,4 @@ UIS.InputEnded:Connect(function(inp)
         aim = false
     end
 end)
-end
+
