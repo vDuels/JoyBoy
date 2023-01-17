@@ -21,6 +21,19 @@ for i,v in pairs(game.Players:GetChildren()) do
     Box.Transparency = 1
     Box.Filled = false
 
+    local HealthBarOutline = Drawing.new("Square")
+    HealthBarOutline.Thickness = 3
+    HealthBarOutline.Filled = false
+    HealthBarOutline.Color = Color3.new(0,0,0)
+    HealthBarOutline.Transparency = 1
+    HealthBarOutline.Visible = false
+
+    local HealthBar = Drawing.new("Square")
+    HealthBar.Thickness = 1
+    HealthBar.Filled = false
+    HealthBar.Transparency = 1
+    HealthBar.Visible = false
+
     function boxesp()
         game:GetService("RunService").RenderStepped:Connect(function()
             if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v ~= lplr and v.Character.Humanoid.Health > 0 then
@@ -41,21 +54,40 @@ for i,v in pairs(game.Players:GetChildren()) do
                     Box.Position = Vector2.new(RootPosition.X - Box.Size.X / 2, RootPosition.Y - Box.Size.Y / 2)
                     Box.Visible = true
 
+                    HealthBarOutline.Size = Vector2.new(2, HeadPosition.Y - LegPosition.Y)
+                    HealthBarOutline.Position = BoxOutline.Position - Vector2.new(6,0)
+                    HealthBarOutline.Visible = true
+
+                    HealthBar.Size = Vector2.new(2, (HeadPosition.Y - LegPosition.Y) / (game:GetService("Players")[v.Character.Name].NRPBS["MaxHealth"].Value / math.clamp(game:GetService("Players")[v.Character.Name].NRPBS["Health"].Value, 0, game:GetService("Players")[v.Character.Name].NRPBS:WaitForChild("MaxHealth").Value)))
+                    HealthBar.Position = Vector2.new(Box.Position.X - 6, Box.Position.Y + (1 / HealthBar.Size.Y))
+                    HealthBar.Color = Color3.fromRGB(255 - 255 / (game:GetService("Players")[v.Character.Name].NRPBS["MaxHealth"].Value / game:GetService("Players")[v.Character.Name].NRPBS["Health"].Value), 255 / (game:GetService("Players")[v.Character.Name].NRPBS["MaxHealth"].Value / game:GetService("Players")[v.Character.Name].NRPBS["Health"].Value), 0)
+                    HealthBar.Visible = true
+
                     if v.TeamColor == lplr.TeamColor then
+                        --- Our Team
                         BoxOutline.Visible = false
                         Box.Visible = false
+                        HealthBarOutline.Visible = false
+                        HealthBar.Visible = false
                     else
+                        ---Enemy Team
                         BoxOutline.Visible = true
                         Box.Visible = true
+                        HealthBarOutline.Visible = true
+                        HealthBar.Visible = true
                     end
 
                 else
                     BoxOutline.Visible = false
                     Box.Visible = false
+                    HealthBarOutline.Visible = false
+                    HealthBar.Visible = false
                 end
             else
                 BoxOutline.Visible = false
                 Box.Visible = false
+                HealthBarOutline.Visible = false
+                HealthBar.Visible = false
             end
         end)
     end
@@ -77,6 +109,19 @@ game.Players.PlayerAdded:Connect(function(v)
     Box.Transparency = 1
     Box.Filled = false
 
+    local HealthBarOutline = Drawing.new("Square")
+    HealthBarOutline.Thickness = 3
+    HealthBarOutline.Filled = false
+    HealthBarOutline.Color = Color3.new(0,0,0)
+    HealthBarOutline.Transparency = 1
+    HealthBarOutline.Visible = false
+
+    local HealthBar = Drawing.new("Square")
+    HealthBar.Thickness = 1
+    HealthBar.Filled = false
+    HealthBar.Transparency = 1
+    HealthBar.Visible = false
+
     function boxesp()
         game:GetService("RunService").RenderStepped:Connect(function()
             if v.Character ~= nil and v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil and v ~= lplr and v.Character.Humanoid.Health > 0 then
@@ -97,23 +142,43 @@ game.Players.PlayerAdded:Connect(function(v)
                     Box.Position = Vector2.new(RootPosition.X - Box.Size.X / 2, RootPosition.Y - Box.Size.Y / 2)
                     Box.Visible = true
 
+                    HealthBarOutline.Size = Vector2.new(2, HeadPosition.Y - LegPosition.Y)
+                    HealthBarOutline.Position = BoxOutline.Position - Vector2.new(6,0)
+                    HealthBarOutline.Visible = true
+
+                    HealthBar.Size = Vector2.new(2, (HeadPosition.Y - LegPosition.Y) / (game:GetService("Players")[v.Character.Name].NRPBS["MaxHealth"].Value / math.clamp(game:GetService("Players")[v.Character.Name].NRPBS["Health"].Value, 0, game:GetService("Players")[v.Character.Name].NRPBS:WaitForChild("MaxHealth").Value)))
+                    HealthBar.Position = Vector2.new(Box.Position.X - 6, Box.Position.Y + (1/HealthBar.Size.Y))
+		    HealthBar.Color = Color3.fromRGB(255 - 255 / (game:GetService("Players")[v.Character.Name].NRPBS["MaxHealth"].Value / game:GetService("Players")[v.Character.Name].NRPBS["Health"].Value), 255 / (game:GetService("Players")[v.Character.Name].NRPBS["MaxHealth"].Value / game:GetService("Players")[v.Character.Name].NRPBS["Health"].Value), 0)                    
+		    HealthBar.Visible = true
+
                     if v.TeamColor == lplr.TeamColor then
+                        --- Our Team
                         BoxOutline.Visible = false
                         Box.Visible = false
+                        HealthBarOutline.Visible = false
+                        HealthBar.Visible = false
                     else
+                        ---Enemy Team
                         BoxOutline.Visible = true
                         Box.Visible = true
+                        HealthBarOutline.Visible = true
+                        HealthBar.Visible = true
                     end
 
                 else
                     BoxOutline.Visible = false
                     Box.Visible = false
+                    HealthBarOutline.Visible = false
+                    HealthBar.Visible = false
                 end
             else
                 BoxOutline.Visible = false
                 Box.Visible = false
+                HealthBarOutline.Visible = false
+                HealthBar.Visible = false
             end
         end)
     end
     coroutine.wrap(boxesp)()
+end)
 end)
