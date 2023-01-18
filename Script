@@ -36,7 +36,7 @@ ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Aimbot.Name = "Aimbot"
 Aimbot.Parent = ScreenGui
-Aimbot.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+Aimbot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Aimbot.Position = UDim2.new(0.0599842146, 0, 0.358722359, 0)
 Aimbot.Size = UDim2.new(0, 126, 0, 152)
 
