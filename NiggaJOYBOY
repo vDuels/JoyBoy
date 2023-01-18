@@ -79,7 +79,7 @@ local function PNHLOYF_fake_script() -- Toggle.LocalScript
 				local target = nil --- nil means no value
 				for i,v in pairs (game:GetService("Players"):GetPlayers()) do
 					if v ~= localplayer then
-						if v.Character and v.Character:FindFirstChild("Head") and _G.aimbot and v.Character.Humanoid.Health > 0 and v.TeamColor ~= localPlayer.TeamColor then --- creating the checks
+						if v.Character and v.Character:FindFirstChild("Head") and v.Character.Humanoid.Health > 0 and v.Character:FindFirstChild("Head") and v.TeamColor ~= localPlayer.TeamColor then
 							local magnitude = (v.Character.Head.Position - localplayer.Character.Head.Position).magnitude
 							if magnitude < dist then
 								dist = magnitude
